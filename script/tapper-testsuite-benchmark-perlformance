@@ -1,0 +1,26 @@
+#! /usr/bin/env perl
+
+use strict;
+use warnings;
+use Tapper::TestSuite::Benchmark::Perl::Formance;
+
+Tapper::TestSuite::Benchmark::Perl::Formance::run;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+tapper-testsuite-benchmark-perlformance - Tapper - Wrapper for Benchmark::Perl::Formance
+
+=head1 ABOUT
+
+This is the frontend commandline tool for starting the Perl
+performance benchmark runs.
+
+=head1 AUTHOR
+
+Steffen Schwigon, C<< <steffen.schwigon at amd.com> >>
+
+=cut
