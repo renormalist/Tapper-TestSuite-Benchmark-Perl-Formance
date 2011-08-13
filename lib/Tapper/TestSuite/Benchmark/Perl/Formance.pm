@@ -199,7 +199,7 @@ sub PerlFormanceResults
         my $perlformancepath = $options->{perlformancepath};
         my ($plugins, $verbose) = @$options{qw(plugins verbose)};
         my $fastmode = ($ENV{PERLFORMANCE_TESTMODE_FAST} ? "--fastmode" : "");
-        my $cmd = "$^X $perlformancepath --tapdescription='benchmarks' $fastmode -ccccc -vvvv -p --outstyle=yaml --indent=2 $plugins --codespeed 2>&1";
+        my $cmd = "$^X $perlformancepath --tapdescription='benchmarks' $fastmode -ccc -vvv -p --outstyle=yaml --indent=2 $plugins --codespeed 2>&1";
         print STDERR "# $cmd\n" if $verbose >= 2;
         my $yaml = qx!$cmd!;
         return $yaml;
