@@ -8,7 +8,7 @@ our $VERSION = '3.000001';
 use IO::Socket::INET;
 use Benchmark::Perl::Formance;
 use Getopt::Long ":config", "no_ignore_case", "bundling";
-
+use Config;
 
 sub _uname {
         my $uname = `uname -a`;
@@ -61,7 +61,13 @@ sub _perl_gitversion {
         }
 }
 
-sub _suite_name            { "benchmark-perlformance".($ENV{PERLFORMANCE_TESTMODE_FAST} ? "-fast" : "") }
+sub _suite_name            {
+        sprintf("benchmark-perlformance-%d.%d%s",
+                $Config{PERL_REVISION},
+                $Config{PERL_VERSION},
+                ($ENV{PERLFORMANCE_TESTMODE_FAST} ? "-fast" : ""),
+               );
+}
 sub _suite_version         { $VERSION }
 sub _suite_type            { 'benchmark' }
 sub _reportgroup_arbitrary { $ENV{TAPPER_REPORT_GROUP} }
