@@ -1,3 +1,12 @@
+2011-11-22  Steffen Schwigon  <steffen.schwigon@amd.com>
+
+	* v3.0.2
+
+	* polishing:
+	- special hostname mapping for perlformance.net Æsthetics
+	- perl version in testsuite name
+	- fix script path to be rewritable
+
 2011-08-12  Steffen Schwigon  <steffen.schwigon@amd.com>
 
 	* v3.0.1
