@@ -3,12 +3,12 @@ package Tapper::TestSuite::Benchmark::Perl::Formance;
 use strict;
 use warnings;
 
-our $VERSION = '3.000001';
+our $VERSION = '3.000002';
 
 use IO::Socket::INET;
 use Benchmark::Perl::Formance;
 use Getopt::Long ":config", "no_ignore_case", "bundling";
-
+use Config;
 
 sub _uname {
         my $uname = `uname -a`;
@@ -19,6 +19,7 @@ sub _uname {
 sub _hostname {
         my $hostname = `hostname`;
         chomp $hostname;
+	$hostname = "perl64.org" if $hostname eq "h1891504"; # special case for PerlFormance.Net Æsthetics
         return $hostname;
 }
 
@@ -61,7 +62,13 @@ sub _perl_gitversion {
         }
 }
 
-sub _suite_name            { "benchmark-perlformance".($ENV{PERLFORMANCE_TESTMODE_FAST} ? "-fast" : "") }
+sub _suite_name            {
+        sprintf("benchmark-perlformance-%d.%d%s",
+                $Config{PERL_REVISION},
+                $Config{PERL_VERSION},
+                ($ENV{PERLFORMANCE_TESTMODE_FAST} ? "-fast" : ""),
+               );
+}
 sub _suite_version         { $VERSION }
 sub _suite_type            { 'benchmark' }
 sub _reportgroup_arbitrary { $ENV{TAPPER_REPORT_GROUP} }
